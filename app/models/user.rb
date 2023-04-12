@@ -10,13 +10,16 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 10, minimum: 2}
   validates :introduction, length: {maximum: 50}
   
-  # フォロワー
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followee_id'
-  has_many :followers, source: :follower
+  # followeeはfollowされたuser
+  # 自分をフォローしている人
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
+  # 自分がフォローしている人
+  has_many :relationships, class_name: 'Relationship', foreign_key: "follower_id", dependent: :destroy
   
-  # フォローしている人
-  has_many :relationships, foreign_key: "follower_id"
-  has_many :followings, source: :followee
+  # 自分がフォローしている人
+  has_many :followings, through: :relationships, source: :followee
+  # 自分をフォローしている人
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   
   def following?(another_user)
     self.followings.include?(another_user)
@@ -30,7 +33,7 @@ class User < ApplicationRecord
   
   def unfollow(another_user)
     unless self == another_user
-      relationship = self.relationships.find(followee_id: another_user.id)
+      relationship = self.relationships.find_by.(followee_id: another_user.id)
       relationship.destroy if relationship
     end
   end

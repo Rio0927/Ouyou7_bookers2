@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   resources :users,only: [:show,:edit,:update,:index] do
     member do
-      get 'followers'
-      get 'followings'
+      post 'relationships' => 'relationships#create'
+      delete 'relationships' => 'relationships#destroy'
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     resource :relationships, only: [:create, :destroy]
   end
