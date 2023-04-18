@@ -1,0 +1,2 @@
+<!--左側がクラスの特定、右側がその指定したクラスのhtmlをどう変更するのか-->
+$('.table__favorite--'+<%= @favorite.book_id%>).html("<%= j(render 'favorites/book',  book: @favorite.book, user: @favorite.user ) %>");
