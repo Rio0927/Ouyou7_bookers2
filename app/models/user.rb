@@ -21,6 +21,9 @@ class User < ApplicationRecord
   # 自分をフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower
   
+  has_many :chats
+  has_many :user_rooms
+  
   def following?(another_user)
     self.followings.include?(another_user)
   end

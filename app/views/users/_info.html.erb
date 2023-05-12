@@ -31,6 +31,9 @@
               <% link_to user_relationships_path(user), method: :delete, class:"btn btn-default" do %>
               フォローを外す
               <% end %>
+              
+              <%#= チャット機能実装 %>
+              <%#= link_to "チャットを始める", chat_path, class: "btn btn-success" %>
             <% else %>
               <% link_to user_relationships_path(user), method: :post, class:"btn btn-primary" do %>
               フォローする
