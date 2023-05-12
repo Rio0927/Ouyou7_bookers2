@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :book_comments, only: [:destroy]
+  
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   root 'home#top'
   get 'home/about'
