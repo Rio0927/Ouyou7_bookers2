@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @books = @user.books
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = @user.books.includes(:favorites).
+      sort_by {|x|
+        x.favorites.includes(:favorites).where(created_at: from...to).size
+      }.reverse
     @book = Book.new
   end
 
