@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
   def index
-    @books = Book.all
+    @books = Book.dec_favo_a_week
     @book = Book.new
   end
 
