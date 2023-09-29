@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_08_082159) do
+ActiveRecord::Schema.define(version: 2023_09_17_084154) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "book_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2023_09_08_082159) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_favorites_on_book_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "read_counts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_read_counts_on_book_id"
+    t.index ["user_id"], name: "index_read_counts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

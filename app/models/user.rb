@@ -23,6 +23,7 @@ class User < ApplicationRecord
   
   has_many :chats
   has_many :user_rooms
+  has_many :read_count, dependent: :destroy
   
   def following?(another_user)
     self.followings.include?(another_user)

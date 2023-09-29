@@ -9,8 +9,11 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @comment = BookComment.new
-  end
-
+    read_count = ReadCount.new(book_id: @book.id, user_id: current_user.id)
+    #ReadCountを新しく作成し、book_idに取得してきた本のid、user_idにcurrent_user = つまり自分のidを入力
+    read_count.save
+  end  
+  
   def edit
     @book = Book.find(params[:id])
     screen_user(@book)
