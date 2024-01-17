@@ -17,7 +17,7 @@ end
 	 
 9.times do |i|
 	Book.create!(
-	    user_id: 30,
+	    user_id: 1,
 		title: "#{i}#{i}",
         body: "#{i}"
 	 )
