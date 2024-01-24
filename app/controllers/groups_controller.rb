@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
     
     def create
         @group = Group.new(group_params)
+        @group_user = GroupUser.new(group_user_params)
         @group.owner_id = current_user.id
         if @group.save
             redirect_to groups_path
@@ -41,5 +42,9 @@ class GroupsController < ApplicationController
     private
     def group_params
         params.require(:group).permit(:name, :introduction, :image)
-    end    
+    end
+    
+    def group_user__params
+        params.require(:group).permit(:user_id, :group_id)
+    end  
 end
