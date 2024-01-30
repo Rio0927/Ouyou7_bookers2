@@ -71,3 +71,5 @@ gem "dotenv-rails"
 gem 'rake', '13.0.3'
 gem 'bundler', '2.5.4'
 gem 'psych', '~> 3.1'
+# gem 'webpacker', github: "rails/webpacker"
+gem 'webpacker', '~> 5.0'
