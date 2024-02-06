@@ -25,9 +25,17 @@ import "jquery";
 // import "bootstrap";
 // import "../stylesheets/application" 
 // import '@fortawesome/fontawesome-free/js/all'
+import Raty from "./raty.js" // 同じ階層にあるraty.jsをRatyという名前でインポート
+window.raty = function(elem,opt){
+    var raty = new Raty(elem,opt)
+    raty.init();
+    return raty;
+}
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.$ = window.jQuery = require('jquery');
 
 // console.log('Hello World from Webpacker')
