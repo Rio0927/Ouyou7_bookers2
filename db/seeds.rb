@@ -19,6 +19,7 @@ end
 	Book.create!(
 	    user_id: 1,
 		title: "#{i}#{i}",
-        body: "#{i}"
+        body: "#{i}",
+        category: "#{i}#{i}"
 	 )
 end
