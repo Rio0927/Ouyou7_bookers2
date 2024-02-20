@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -69,3 +69,7 @@ gem 'jquery-rails'
 
 gem "dotenv-rails"
 gem 'rake', '13.0.3'
+gem 'bundler', '2.5.4'
+gem 'psych', '~> 3.1'
+# gem 'webpacker', github: "rails/webpacker"
+gem 'webpacker', '~> 5.0'

@@ -20,9 +20,15 @@ Rails.application.routes.draw do
   end
 
   resources :book_comments, only: [:destroy]
+  resources :groups, except: [:destroy] do
+    resource :group_users, only: [:create, :destroy]
+    resources :event_notices, only: [:new, :create]
+    get "event_notices" => "event_notices#sent"
+  end  
 
   root 'home#top'
   get 'home/about'
+  get 'tagsearches/search', to: 'tag_searches#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
