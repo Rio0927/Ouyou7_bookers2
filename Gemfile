@@ -73,3 +73,11 @@ gem 'bundler', '2.5.4'
 gem 'psych', '~> 3.1'
 # gem 'webpacker', github: "rails/webpacker"
 gem 'webpacker', '~> 5.0'
+
+group :production do
+  gem 'mysql2'
+end
+
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
